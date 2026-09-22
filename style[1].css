@@ -1,0 +1,231 @@
+/* ============================================
+   Shared styles — used by index.html (personal page)
+   and css-landing.html (CSS landing page)
+   ============================================ */
+
+:root {
+  --ink: #1b1f23;
+  --paper: #faf8f5;
+  --line: #d8d2c8;
+  --accent: #2d5c4f;
+  --accent-soft: #e4ede9;
+  --muted: #6b6459;
+  --serif: "Georgia", "Iowan Old Style", serif;
+  --sans: "Helvetica Neue", Arial, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: var(--sans);
+  color: var(--ink);
+  background: var(--paper);
+  line-height: 1.5;
+}
+
+/* ---------- Nav menu (shared across all 3 pages) ---------- */
+.site-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.1rem 2rem;
+  border-bottom: 1px solid var(--line);
+  background: var(--paper);
+}
+
+.site-nav .brand {
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.site-nav ul {
+  display: flex;
+  gap: 1.75rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.site-nav a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.95rem;
+  border-bottom: 2px solid transparent;
+  padding-bottom: 2px;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.site-nav a:hover,
+.site-nav a[aria-current="page"] {
+  color: var(--ink);
+  border-color: var(--accent);
+}
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.9rem;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+@media (max-width: 560px) {
+  .site-nav { flex-wrap: wrap; align-items: center; }
+  .nav-toggle { display: inline-block; }
+  /* Only collapse the menu if JS is running and added .js-nav to <body>.
+     If JS fails to load, the full menu list stays visible and stacked. */
+  .js-nav .site-nav ul {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: 0.75rem;
+  }
+  .js-nav .site-nav ul.is-open { display: flex; }
+  body:not(.js-nav) .site-nav ul {
+    flex-direction: column;
+    gap: 0.75rem;
+    width: 100%;
+    margin-top: 0.75rem;
+  }
+}
+
+/* ---------- Personal page ---------- */
+.personal-hero {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 4rem 1.5rem 2rem;
+}
+
+.personal-hero h1 {
+  font-family: var(--serif);
+  font-size: clamp(2rem, 5vw, 2.75rem);
+  margin: 0 0 0.5rem;
+}
+
+.personal-hero .role {
+  color: var(--accent);
+  font-weight: 600;
+  margin: 0 0 1.5rem;
+}
+
+.personal-hero p {
+  max-width: 62ch;
+  color: var(--ink);
+}
+
+.personal-section {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 1.5rem 1.5rem 3rem;
+  border-top: 1px solid var(--line);
+}
+
+.personal-section h2 {
+  font-family: var(--serif);
+  font-size: 1.3rem;
+  margin-bottom: 0.75rem;
+}
+
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.tag-list li {
+  background: var(--accent-soft);
+  color: var(--accent);
+  padding: 0.35rem 0.75rem;
+  border-radius: 3px;
+  font-size: 0.85rem;
+}
+
+.contact-list {
+  padding: 0;
+  list-style: none;
+}
+
+.contact-list a {
+  color: var(--accent);
+}
+
+footer.site-footer {
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.85rem;
+  padding: 2rem 1rem 3rem;
+}
+
+/* ---------- CSS landing page ---------- */
+.landing-hero {
+  padding: 5rem 1.5rem 4rem;
+  text-align: left;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.landing-hero .eyebrow-line {
+  color: var(--accent);
+  font-weight: 600;
+  margin: 0 0 0.75rem;
+}
+
+.landing-hero h1 {
+  font-family: var(--serif);
+  font-size: clamp(2.2rem, 6vw, 3.4rem);
+  line-height: 1.1;
+  margin: 0 0 1.25rem;
+  max-width: 16ch;
+}
+
+.landing-hero p.lede {
+  max-width: 55ch;
+  font-size: 1.1rem;
+  color: var(--ink);
+  margin-bottom: 2rem;
+}
+
+.btn {
+  display: inline-block;
+  background: var(--accent);
+  color: #fff;
+  padding: 0.7rem 1.5rem;
+  border-radius: 3px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.btn:hover { background: #234b40; }
+
+.landing-grid {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 4rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.75rem;
+  border-top: 1px solid var(--line);
+}
+
+.landing-grid .feature h3 {
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  margin: 0 0 0.5rem;
+}
+
+.landing-grid .feature p {
+  color: var(--muted);
+  font-size: 0.95rem;
+  margin: 0;
+}
